@@ -23,11 +23,11 @@ public class ThreadStopMainV4 {
             while (!Thread.interrupted()) {    // 인터럽트 상태 변경 O(interrupted() 메서드는 인터럽트 상태를 바꿔줌, 해당 메서드 타고 들어가보면 상태 변경하는 코드가 나옴.)
                 log("작업 중");
             }
-            log("work 스레드 인터럽트 상태2 = " + Thread.currentThread().isInterrupted());   // True
+            log("work 스레드 인터럽트 상태2 = " + Thread.currentThread().isInterrupted());   // False
 
             try {
                 log("자원 정리 시도");
-                Thread.sleep(1000); // 이미 인터럽트 상태인데 이때 인터럽트 예외가 터져서 인터럽트 상태가 False가 됨.
+                Thread.sleep(1000);
                 log("자원 정리 완료");
             } catch (InterruptedException e) {
                 log("자원 정리 실패 - 자원 정리 중 인터럽트 발생");
