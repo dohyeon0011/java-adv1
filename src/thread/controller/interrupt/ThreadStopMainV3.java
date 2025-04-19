@@ -28,7 +28,7 @@ public class ThreadStopMainV3 {
             while (!Thread.currentThread().isInterrupted()) {    // 인터럽트 상태가 아니면(인터럽트 상태 변경 X, 왜냐면 isInterrupted()는 인터럽트 상태만 확인하기 때문, 해당 메서드 타고 들어가면 상태 확인만 하는 메서드임을 알 수 있음.)
                 log("작업 중");
             }
-            log("work 스레드 인터럽트 상태2 = " + Thread.currentThread().isInterrupted());
+            log("work 스레드 인터럽트 상태2 = " + Thread.currentThread().isInterrupted());   // True
 
             try {   // 결과적으로 자원 정리를 하는 도중에 인터럽트가 발생해서, 자원 정리에 실패한다.
                 log("자원 정리 시도");
