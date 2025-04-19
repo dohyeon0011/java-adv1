@@ -23,7 +23,7 @@ public class ThreadStopMainV2 {
             try {
                 while (true) {  // main 스레드가 작업 중단 지시 내리자마자 바로 -catch 문으로 탈출함.(이때는 인터럽트 상태 체크 안함)
                     log("작업 중");
-                    Thread.sleep(3000); // 대기 중에 인터럽트 상태가 되면 예외 터짐.(이때 인터럽트 상태를 풀어버림, 해당 메서드를 타고 들어가보면 상태를 변경하는 코드가 나옴.)
+                    Thread.sleep(3000); // 대기 중에 인터럽트 상태가 되면 예외 터짐.(이때 인터럽트 상태를 풀어버림)
                 }
             } catch (InterruptedException e) {
                 log("work 스레드 인터럽트 상태2 = " + Thread.currentThread().isInterrupted());   // 인터럽트 상태가 풀리게 됨.(인터럽트를 걸어놨는데 인터럽트 예외가 터져서)
