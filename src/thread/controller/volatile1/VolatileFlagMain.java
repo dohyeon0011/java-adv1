@@ -13,7 +13,7 @@ public class VolatileFlagMain {
 
         sleep(1000);
         log("runFlag를 false로 변경 시도");
-        task.runFlag = false;   // main 스레드가 runFlag의 값을 변경해도 CPU 코어1(예시 CPU 코어)이 사용하는 캐시 메모리의 runFlag 값만 false 변경되고, 메인 메모리의 runFlag 값은 true다.
+        task.runFlag = false;   // main 스레드가 runFlag의 값을 변경해도 main 스레드의 캐시 메모리의 runFlag 값만 false 변경되고, 메인 메모리의 runFlag 값은 true다. 이후에 컨텍스트 스위칭이 발생하면 그때 메인 메모리에 변경된 값이 반영되고, 다시 캐시 메모리를 갱신.
         log("runFlag = " + task.runFlag);   // CPU는 기본적으로 빠른 로딩을 위해 메인 메모리의 값을 읽어오는 것이 아니라, CPU 코어와 거리로도 성능으로도 가까운 캐시 메모리에서 읽어옴.(캐시 메모리에 언제 반영될 지는 CPU 설계 방식과 실행 환경에 따라 다름. 컨텍스트 스위칭 때 갱신이 됨, 아니면 잠깐 Thread.sleep() 이후에 될 지 말지?)
         log("main 종료");                     // 이렇게 메인 메모리에 캐시 메모리의 변경된 값이 반영이 되지 않은 상태를 메모리 가시성이라고 함.
     }
