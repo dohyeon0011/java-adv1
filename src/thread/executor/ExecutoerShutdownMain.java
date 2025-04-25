@@ -38,7 +38,7 @@ public class ExecutoerShutdownMain {
                 }
             }
         } catch (InterruptedException e) {
-            // awaitTermination()으로 대기중인 현재 스레드가 인터럽트 될 수 있다.
+            // awaitTermination()으로 대기중인 현재 스레드가 인터럽트 될 수 있다.(대기 중인 스레드가 interrupt됨.)
             es.shutdownNow();
         }
     }
